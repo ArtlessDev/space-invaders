@@ -33,5 +33,12 @@ namespace JairLib
         {
             //TODO: implement bullet hitting enemies
         }
+
+        public void ResetBullet()
+        {
+            state = BulletStates.Ready;
+            rectangle = new Rectangle(0, MagicNumbers.RESET_HEIGHT, rectangle.Width, rectangle.Height);
+
+        }
     }
 }

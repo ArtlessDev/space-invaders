@@ -18,6 +18,10 @@ namespace SpaceInvaders
             Content.RootDirectory = "Content";
             Util.GlobalContent = Content;
             IsMouseVisible = true;
+
+            _graphics.PreferredBackBufferWidth = MagicNumbers.SCREEN_WIDTH;
+            _graphics.PreferredBackBufferHeight = MagicNumbers.SCREEN_HEIGHT;
+            _graphics.PreferredBackBufferFormat = SurfaceFormat.Color;
         }
 
         protected override void Initialize()
@@ -32,6 +36,8 @@ namespace SpaceInvaders
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             _player = new Player();
+            Util.Load();
+            
             // TODO: use this.Content to load your game content here
         }
 
@@ -46,6 +52,13 @@ namespace SpaceInvaders
 
             _player.Update(gameTime);
 
+            foreach (var monster in MagicNumbers.LEVEL_ONE)
+            {
+                monster.Update(gameTime);
+            }
+            
+            Util.HandleBulletCollision(_player, gameTime);
+
             base.Update(gameTime);
         }
 
@@ -58,10 +71,17 @@ namespace SpaceInvaders
 
             _spriteBatch.Draw(_player.texture, _player.rectangle, _player.color);
 
-            foreach(var item in _player.ammo)
+            foreach (var item in _player.ammo)
             {
                 _spriteBatch.Draw(item.texture, item.rectangle, item.color);
             }
+
+            foreach (var item in MagicNumbers.LEVEL_ONE)
+            {
+                _spriteBatch.Draw(item.texture, item.rectangle, item.color);
+            }
+
+            _spriteBatch.DrawString(Util.gameFont, $"Score: {_player.PlayerScore}", new Vector2(MagicNumbers.SCREEN_WIDTH/2, MagicNumbers.SCREEN_HEIGHT-32), Color.White);
 
             _spriteBatch.End();
 

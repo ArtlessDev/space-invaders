@@ -20,6 +20,7 @@ namespace JairLib
         public Texture2D texture { get; set; }
         public Color color { get; set; }
         public Bullet[] ammo { get; set; }
+        public int PlayerScore { get; set; }
 
         public void Update(GameTime gameTime)
         {
@@ -58,6 +59,11 @@ namespace JairLib
                     }
                 }
             }
+        }
+
+        public void ScoreIncrease(Monster monster)
+        {
+            PlayerScore += 100 * monster.MaxHealth;
         }
     }
 }
