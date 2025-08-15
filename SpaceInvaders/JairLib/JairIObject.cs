@@ -5,5 +5,5 @@ public interface IJairObject {
     string identifier {get; set;}
     Rectangle rectangle{get; set;}
     Texture2D texture{get; set;}
-    Color color{get; set;}
+    Color color{ get; set; }
 }

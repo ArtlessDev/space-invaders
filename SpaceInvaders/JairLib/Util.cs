@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended.Collisions.Layers;
 using MonoGame.Extended.Input;
+using MonoGame.Extended.Tiled.Renderers;
 
 namespace JairLib
 {
@@ -11,6 +12,7 @@ namespace JairLib
         public static KeyboardStateExtended keyboardState;
         public static ContentManager GlobalContent;
         public static SpriteFont gameFont;
+        public static GameState gameState;
 
         public static void Load()
         {
@@ -37,7 +39,18 @@ namespace JairLib
                         _player.ScoreIncrease(monster);
                     }
                 }
+
+                if (monster.rectangle.Y >= MagicNumbers.MONSTER_PASS_HEIGHT)
+                {
+                    monster.ResetMonster();
+                    _player.Yeowch();
+                }
             }
+        }
+
+        public static void GameOver()
+        {
+
         }
     }
 }

@@ -22,7 +22,7 @@ namespace JairLib
             PointWorth = 300;
 
             int rand = Random.Shared.Next(MagicNumbers.SCREEN_BORDER_LIMIT_LEFT, MagicNumbers.SCREEN_BORDER_LIMIT_RIGHT);
-            rectangle = new Rectangle(rand, 0, 64, 64);
+            rectangle = new Rectangle(rand, 0, 32, 32);
         }
 
         public string identifier { get; set; }

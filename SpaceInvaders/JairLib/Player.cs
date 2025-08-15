@@ -11,8 +11,10 @@ namespace JairLib
         {
             color = Color.White;
             texture = Util.GlobalContent.Load<Texture2D>("Sprites/playerShip");
-            rectangle = new Rectangle(100, 300, 64, 64);
+            rectangle = new Rectangle(100, 400, 32, 32);
             ammo = [new Bullet(new()), new Bullet(new()), new Bullet(new())];
+            PlayerHealth = MagicNumbers.PLAYER_BASE_HEALTH;
+            PlayerSpeed = MagicNumbers.SHIP_BASE_SPEED;
         }
 
         public string identifier { get; set; }
@@ -21,6 +23,8 @@ namespace JairLib
         public Color color { get; set; }
         public Bullet[] ammo { get; set; }
         public int PlayerScore { get; set; }
+        public int PlayerHealth { get; set; }
+        public int PlayerSpeed { get; set; }
 
         public void Update(GameTime gameTime)
         {
@@ -37,11 +41,11 @@ namespace JairLib
         {
             if (Util.keyboardState.IsKeyDown(Keys.A))
             {
-                rectangle = new Rectangle(rectangle.X - MagicNumbers.SHIP_BASE_SPEED, rectangle.Y, rectangle.Width, rectangle.Height);
+                rectangle = new Rectangle(rectangle.X - PlayerSpeed, rectangle.Y, rectangle.Width, rectangle.Height);
             }
             else if (Util.keyboardState.IsKeyDown(Keys.D))
             {
-                rectangle = new Rectangle(rectangle.X + MagicNumbers.SHIP_BASE_SPEED, rectangle.Y, rectangle.Width, rectangle.Height);
+                rectangle = new Rectangle(rectangle.X + PlayerSpeed, rectangle.Y, rectangle.Width, rectangle.Height);
             }
         }
 
@@ -64,6 +68,15 @@ namespace JairLib
         public void ScoreIncrease(Monster monster)
         {
             PlayerScore += 100 * monster.MaxHealth;
+        }
+
+        public void Yeowch()    //!
+        {
+            PlayerHealth--;
+
+            if (PlayerHealth <= 0)
+                Util.gameState = GameState.RoundOver;
+
         }
     }
 }

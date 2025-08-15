@@ -19,6 +19,9 @@ namespace JairLib
         public Texture2D texture { get; set; }
         public Color color { get; set; }
         public BulletStates state { get; set; }
+        public int damageLevel { get; set; }
+        public int bulletSpeed { get; set; }
+        public BulletType type { get; set; }
 
         public void Travel()
         {

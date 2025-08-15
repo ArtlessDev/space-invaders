@@ -10,7 +10,7 @@ namespace SpaceInvaders
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
-        Player _player;
+        public Player _player;
 
         public Game1()
         {
@@ -82,6 +82,7 @@ namespace SpaceInvaders
             }
 
             _spriteBatch.DrawString(Util.gameFont, $"Score: {_player.PlayerScore}", new Vector2(MagicNumbers.SCREEN_WIDTH/2, MagicNumbers.SCREEN_HEIGHT-32), Color.White);
+            _spriteBatch.DrawString(Util.gameFont, $"Player HP: {_player.PlayerHealth}", new Vector2(MagicNumbers.SCREEN_BORDER_LIMIT_LEFT, MagicNumbers.SCREEN_HEIGHT-32), Color.White);
 
             _spriteBatch.End();
 
