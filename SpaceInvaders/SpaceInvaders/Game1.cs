@@ -2,6 +2,11 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using JairLib;
+using Gum.Forms.Controls;
+using MonoGameGum;
+using Gum.Forms;
+using JairLib.Toolbox;
+using JairLib.CustomObjects;
 
 namespace SpaceInvaders
 {
@@ -27,7 +32,28 @@ namespace SpaceInvaders
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            Util.gummy.Initialize(this, DefaultVisualsVersion.V2);
 
+            var stackPanel = new StackPanel();
+            stackPanel.AddToRoot();
+
+
+            var button = new Button();
+            stackPanel.AddChild(button);
+            stackPanel.X = 50;
+            stackPanel.Y = 50;
+
+            
+
+            button.Width = 100;
+            button.Height = 50;
+            button.Text = "Hello MonoGame!";
+            int clickCount = 0;
+            button.Click += (_, _) =>
+            {
+                clickCount++;
+                button.Text = $"Clicked {clickCount} times";
+            };
             base.Initialize();
         }
 
@@ -49,19 +75,18 @@ namespace SpaceInvaders
             // TODO: Add your update logic here
 
             Util.Update(gameTime);
+            Util.gummy.Update(gameTime);
+            Button button = new Button();
 
-            _player.Update(gameTime);
 
-            foreach (var monster in MagicNumbers.LEVEL_ONE)
-            {
-                monster.Update(gameTime);
-            }
-            
-            Util.HandleBulletCollision(_player, gameTime);
+            GameStateManager.Playing(gameTime, _player);
+            GameStateManager.RoundOver(gameTime, _player);
+            GameStateManager.UpgradeTime(gameTime, _player);
 
             base.Update(gameTime);
         }
 
+        #region Draw Function
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
@@ -69,24 +94,14 @@ namespace SpaceInvaders
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
 
-            _spriteBatch.Draw(_player.texture, _player.rectangle, _player.color);
+            Globals.RoundOverDraw(_spriteBatch);
+            Globals.PlayingDraw(_spriteBatch, _player);
 
-            foreach (var item in _player.ammo)
-            {
-                _spriteBatch.Draw(item.texture, item.rectangle, item.color);
-            }
-
-            foreach (var item in MagicNumbers.LEVEL_ONE)
-            {
-                _spriteBatch.Draw(item.texture, item.rectangle, item.color);
-            }
-
-            _spriteBatch.DrawString(Util.gameFont, $"Score: {_player.PlayerScore}", new Vector2(MagicNumbers.SCREEN_WIDTH/2, MagicNumbers.SCREEN_HEIGHT-32), Color.White);
-            _spriteBatch.DrawString(Util.gameFont, $"Player HP: {_player.PlayerHealth}", new Vector2(MagicNumbers.SCREEN_BORDER_LIMIT_LEFT, MagicNumbers.SCREEN_HEIGHT-32), Color.White);
-
+            Util.gummy.Draw();
             _spriteBatch.End();
 
             base.Draw(gameTime);
         }
+        #endregion
     }
 }
