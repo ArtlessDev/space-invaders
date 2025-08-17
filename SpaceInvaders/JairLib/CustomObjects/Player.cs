@@ -1,9 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using JairLib.Toolbox;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-
-namespace JairLib
+namespace JairLib.CustomObjects
 {
     public class Player : IJairObject
     {
@@ -39,11 +39,11 @@ namespace JairLib
 
         public void Movement()
         {
-            if (Util.keyboardState.IsKeyDown(Keys.A))
+            if (Util.keyboardState.IsKeyDown(Keys.A) || Util.keyboardState.IsKeyDown(Keys.Left))
             {
                 rectangle = new Rectangle(rectangle.X - PlayerSpeed, rectangle.Y, rectangle.Width, rectangle.Height);
             }
-            else if (Util.keyboardState.IsKeyDown(Keys.D))
+            else if (Util.keyboardState.IsKeyDown(Keys.D) || Util.keyboardState.IsKeyDown(Keys.Right))
             {
                 rectangle = new Rectangle(rectangle.X + PlayerSpeed, rectangle.Y, rectangle.Width, rectangle.Height);
             }

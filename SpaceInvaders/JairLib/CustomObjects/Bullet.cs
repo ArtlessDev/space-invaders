@@ -1,8 +1,8 @@
-﻿
+﻿using JairLib.Toolbox;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace JairLib
+namespace JairLib.CustomObjects
 {
     public class Bullet : IJairObject
     {

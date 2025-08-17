@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using JairLib.Toolbox;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JairLib
+namespace JairLib.CustomObjects
 {
     public class Monster : IJairObject
     {
@@ -37,7 +38,7 @@ namespace JairLib
 
         public void Update(GameTime gameTime)
         {
-            rectangle = new Rectangle(rectangle.X, rectangle.Y+1, rectangle.Width, rectangle.Height);
+            rectangle = new Rectangle(rectangle.X, rectangle.Y + 1, rectangle.Width, rectangle.Height);
         }
 
         public void ResetMonster()

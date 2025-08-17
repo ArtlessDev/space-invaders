@@ -1,18 +1,22 @@
-﻿using Microsoft.Xna.Framework;
+﻿using JairLib.CustomObjects;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended.Collisions.Layers;
 using MonoGame.Extended.Input;
 using MonoGame.Extended.Tiled.Renderers;
+using MonoGameGum;
 
-namespace JairLib
+namespace JairLib.Toolbox
 {
     public static class Util
     {
+        public static GumService gummy => GumService.Default;
         public static KeyboardStateExtended keyboardState;
         public static ContentManager GlobalContent;
         public static SpriteFont gameFont;
-        public static GameState gameState;
+        public static GameState gameState = GameState.Playing;
+        public static int GameLevel = MagicNumbers.STARTING_ROUND;
 
         public static void Load()
         {
@@ -46,11 +50,6 @@ namespace JairLib
                     _player.Yeowch();
                 }
             }
-        }
-
-        public static void GameOver()
-        {
-
         }
     }
 }
