@@ -45,4 +45,11 @@ namespace JairLib.Toolbox
         Triple,
         Heavy,
     }
+    public enum UpgradeStates
+    {
+        None,
+        Reset,
+        Moving,
+        Waiting,
+    }
 }

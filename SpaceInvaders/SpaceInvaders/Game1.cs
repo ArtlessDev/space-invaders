@@ -8,6 +8,8 @@ using Gum.Forms;
 using JairLib.Toolbox;
 using JairLib.CustomObjects;
 using SpaceInvaders.Core;
+using System.Diagnostics;
+using System;
 
 namespace SpaceInvaders
 {
@@ -45,8 +47,9 @@ namespace SpaceInvaders
 
             _player = new Player();
             Util.Load();
+            test = new UpgradeObject(_player);
 
-
+            #region test gum ui button
             var stackPanel = new StackPanel();
             stackPanel.AddToRoot();
 
@@ -55,9 +58,6 @@ namespace SpaceInvaders
             stackPanel.AddChild(button);
             stackPanel.X = 50;
             stackPanel.Y = 50;
-
-
-            test = new UpgradeObject(_player);
 
             button.Width = 100;
             button.Height = 50;
@@ -68,6 +68,7 @@ namespace SpaceInvaders
                 clickCount++;
                 button.Text = $"Clicked {clickCount} times";
             };
+            #endregion
             // TODO: use this.Content to load your game content here
         }
 
@@ -79,9 +80,21 @@ namespace SpaceInvaders
             // TODO: Add your update logic here
 
             Util.Update(gameTime);
-            Util.gummy.Update(gameTime);
-            Button button = new Button();
+            //Util.gummy.Update(gameTime);
+            //Button button = new Button();
 
+            test.DoUpdate(gameTime, _player);
+            test.Destroy(gameTime, _player);
+            if (_player.PlayerScore % 1500 == 0 && _player.PlayerScore != 0 && test.GetGoingFlag)
+            {
+
+                int upgradeRand = Random.Shared.Next(0, 7);
+
+                test.UpgradeDelegate = test.GetUpgradeMethod(_player, upgradeRand);
+                Debug.WriteLine(upgradeRand + ": UPDATED TO: " + test.UpgradeDelegate.Method);
+
+                test.GetGoing(_player);
+            }
 
             GameStateManager.Playing(gameTime, _player);
             GameStateManager.RoundOver(gameTime, _player);
@@ -103,7 +116,7 @@ namespace SpaceInvaders
 
             _spriteBatch.Draw(test.texture, test.rectangle, test.color);
 
-            Util.gummy.Draw();
+            //Util.gummy.Draw();
             _spriteBatch.End();
 
             base.Draw(gameTime);
