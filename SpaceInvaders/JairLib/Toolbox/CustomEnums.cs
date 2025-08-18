@@ -6,6 +6,17 @@ using System.Threading.Tasks;
 
 namespace JairLib.Toolbox
 {
+    public enum Upgrades
+    {
+        ExtraShot,
+        TripleShot,
+        DamageBoost,
+        HealthBoost,
+        SpeedBoost,
+        Teleporter,
+        HeavyBlast,
+        BulletSpeed,
+    }
     public enum BulletStates
     {
         None,

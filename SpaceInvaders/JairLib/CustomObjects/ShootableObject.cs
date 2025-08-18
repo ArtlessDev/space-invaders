@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace JairLib.CustomObjects
 {
-    public class ShootableObject : IJairObject
+    public abstract class ShootableObject : IJairObject
     {
         public ShootableObject() { }
         public string identifier { get; set; }

@@ -7,6 +7,7 @@ using MonoGameGum;
 using Gum.Forms;
 using JairLib.Toolbox;
 using JairLib.CustomObjects;
+using SpaceInvaders.Core;
 
 namespace SpaceInvaders
 {
@@ -16,6 +17,7 @@ namespace SpaceInvaders
         private SpriteBatch _spriteBatch;
 
         public Player _player;
+        UpgradeObject test;
 
         public Game1()
         {
@@ -34,6 +36,17 @@ namespace SpaceInvaders
             // TODO: Add your initialization logic here
             Util.gummy.Initialize(this, DefaultVisualsVersion.V2);
 
+            base.Initialize();
+        }
+
+        protected override void LoadContent()
+        {
+            _spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            _player = new Player();
+            Util.Load();
+
+
             var stackPanel = new StackPanel();
             stackPanel.AddToRoot();
 
@@ -43,7 +56,8 @@ namespace SpaceInvaders
             stackPanel.X = 50;
             stackPanel.Y = 50;
 
-            
+
+            test = new UpgradeObject(_player);
 
             button.Width = 100;
             button.Height = 50;
@@ -54,16 +68,6 @@ namespace SpaceInvaders
                 clickCount++;
                 button.Text = $"Clicked {clickCount} times";
             };
-            base.Initialize();
-        }
-
-        protected override void LoadContent()
-        {
-            _spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            _player = new Player();
-            Util.Load();
-            
             // TODO: use this.Content to load your game content here
         }
 
@@ -96,6 +100,8 @@ namespace SpaceInvaders
 
             GameFunctions.RoundOverDraw(_spriteBatch);
             GameFunctions.PlayingDraw(_spriteBatch, _player);
+
+            _spriteBatch.Draw(test.texture, test.rectangle, test.color);
 
             Util.gummy.Draw();
             _spriteBatch.End();

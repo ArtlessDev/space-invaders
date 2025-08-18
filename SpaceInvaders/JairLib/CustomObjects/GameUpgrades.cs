@@ -10,8 +10,10 @@ using System.Threading.Tasks;
 
 namespace JairLib.CustomObjects
 {
-    public class GameUpgrades
+    public partial class UpgradeObject
     {
+        public delegate void GameUpgradeDelegate(Player _player); 
+
         public void ExtraShot(Player _player)
         {
             int newLength = _player.ammo.Length + 1;
@@ -98,16 +100,5 @@ namespace JairLib.CustomObjects
         {
             //when this upgrade is bought, if you dont miss a shot for 3 shots, then your third shot will triple the score of the third shot
         }
-    }
-
-    public enum Upgrades
-    {
-        TripleShot,
-        DamageBoost,
-        HealthBoost,
-        SpeedBoost,
-        Teleporter,
-        HeavyBlast,
-        BulletSpeed,
     }
 }

@@ -3,7 +3,7 @@ using JairLib.Toolbox;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace SpaceInvaders
+namespace SpaceInvaders.Core
 {
     public static class GameFunctions
     {
