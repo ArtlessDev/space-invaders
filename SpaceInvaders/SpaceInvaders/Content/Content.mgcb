@@ -68,6 +68,13 @@
 /processorParam:TextureFormat=Compressed
 /build:Sprites/PrettyPixelBIG.spritefont
 
+#begin Sprites/PrettyPixelSMALL.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Sprites/PrettyPixelSMALL.spritefont
+
 #begin Sprites/tripleShot.png
 /importer:TextureImporter
 /processor:TextureProcessor

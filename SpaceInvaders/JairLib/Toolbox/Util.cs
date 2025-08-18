@@ -15,12 +15,14 @@ namespace JairLib.Toolbox
         public static KeyboardStateExtended keyboardState;
         public static ContentManager GlobalContent;
         public static SpriteFont gameFont;
+        public static SpriteFont gameFontSmall;
         public static GameState gameState = GameState.Playing;
         public static int GameLevel = MagicNumbers.STARTING_ROUND;
 
         public static void Load()
         {
             gameFont = GlobalContent.Load<SpriteFont>("Sprites/PrettyPixelBIG");
+            gameFontSmall = GlobalContent.Load<SpriteFont>("Sprites/PrettyPixelSMALL");
         }
 
         public static void Update(GameTime gameTime)

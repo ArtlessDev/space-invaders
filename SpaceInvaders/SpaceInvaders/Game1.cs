@@ -94,8 +94,8 @@ namespace SpaceInvaders
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
 
-            Globals.RoundOverDraw(_spriteBatch);
-            Globals.PlayingDraw(_spriteBatch, _player);
+            GameFunctions.RoundOverDraw(_spriteBatch);
+            GameFunctions.PlayingDraw(_spriteBatch, _player);
 
             Util.gummy.Draw();
             _spriteBatch.End();

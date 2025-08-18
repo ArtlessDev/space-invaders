@@ -66,7 +66,8 @@ namespace JairLib.CustomObjects
         }
         public void Teleporter(Player _player)
         {
-
+            /// place 2 teleporters, one on the left, and the other on the right,
+            /// the player will then be able to pass through them back and forth to reach farther aliens faster
         }
         public void HeavyBlast(Player _player)
         {

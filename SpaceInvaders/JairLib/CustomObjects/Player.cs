@@ -11,7 +11,7 @@ namespace JairLib.CustomObjects
         {
             color = Color.White;
             texture = Util.GlobalContent.Load<Texture2D>("Sprites/playerShip");
-            rectangle = new Rectangle(100, 400, 32, 32);
+            rectangle = new Rectangle(100, MagicNumbers.PLAYER_BASE_HEIGHT, 32, 32);
             ammo = [new Bullet(new()), new Bullet(new()), new Bullet(new())];
             PlayerHealth = MagicNumbers.PLAYER_BASE_HEALTH;
             PlayerSpeed = MagicNumbers.SHIP_BASE_SPEED;
