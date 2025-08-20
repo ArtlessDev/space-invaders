@@ -13,7 +13,7 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin Sprites/bullet.png
+#begin Sprites/Bullets/bullet.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -23,9 +23,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprites/bullet.png
+/build:Sprites/Bullets/bullet.png
 
-#begin Sprites/heavyShot.png
+#begin Sprites/Bullets/heavyShot.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -35,9 +35,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprites/heavyShot.png
+/build:Sprites/Bullets/heavyShot.png
 
-#begin Sprites/monster.png
+#begin Sprites/Bullets/tripleShot.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -47,7 +47,19 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprites/monster.png
+/build:Sprites/Bullets/tripleShot.png
+
+#begin Sprites/Monsters/monster.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Monsters/monster.png
 
 #begin Sprites/playerShip.png
 /importer:TextureImporter
@@ -75,7 +87,7 @@
 /processorParam:TextureFormat=Compressed
 /build:Sprites/PrettyPixelSMALL.spritefont
 
-#begin Sprites/tripleShot.png
+#begin Sprites/Upgrades/teleporter.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -85,5 +97,5 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprites/tripleShot.png
+/build:Sprites/Upgrades/teleporter.png
 

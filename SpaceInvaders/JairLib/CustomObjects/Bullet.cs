@@ -8,10 +8,11 @@ namespace JairLib.CustomObjects
     {
         public Bullet(Rectangle _rect)
         {
-            texture = Util.GlobalContent.Load<Texture2D>("Sprites/bullet");
+            texture = Util.GlobalContent.Load<Texture2D>("Sprites/Bullets/bullet");
             color = Color.White;
             rectangle = _rect;
             state = BulletStates.None;
+            bulletSpeed = MagicNumbers.BULLET_BASE_SPEED;
         }
 
         public string identifier { get; set; }
@@ -26,7 +27,7 @@ namespace JairLib.CustomObjects
         public void Travel()
         {
             if (state == BulletStates.Firing)
-                rectangle = new Rectangle(rectangle.X, rectangle.Y - MagicNumbers.BULLET_BASE_SPEED, rectangle.Width, rectangle.Height);
+                rectangle = new Rectangle(rectangle.X, rectangle.Y - bulletSpeed, rectangle.Width, rectangle.Height);
 
             if (rectangle.Y <= -50)
                 state = BulletStates.Ready;

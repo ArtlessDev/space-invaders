@@ -13,7 +13,7 @@ namespace JairLib.CustomObjects
     {
         public Monster()
         {
-            texture = Util.GlobalContent.Load<Texture2D>("Sprites/monster");
+            texture = Util.GlobalContent.Load<Texture2D>("Sprites/Monsters/monster");
             color = Color.Azure;
 
             MaxHealth = 3;

@@ -18,7 +18,7 @@ namespace JairLib.CustomObjects
             int rand = Random.Shared.Next(0, 7);
 
             UpgradeDelegate = GetUpgradeMethod(_player, rand);
-            texture = Util.GlobalContent.Load<Texture2D>("Sprites/heavyShot");
+            texture = Util.GlobalContent.Load<Texture2D>("Sprites/Bullets/heavyShot");
             rectangle = new Rectangle(0, MagicNumbers.SCREEN_BORDER_LIMIT_LEFT, 64, 64);
             color = Color.White;
             upgradeId = (Upgrades)rand;
@@ -85,7 +85,6 @@ namespace JairLib.CustomObjects
             upgradeState = UpgradeStates.Reset;
 
         }
-
         public void GetGoing(Player _player)
         {
             upgradeState = UpgradeStates.Moving;

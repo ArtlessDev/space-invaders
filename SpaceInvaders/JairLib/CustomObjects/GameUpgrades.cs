@@ -44,12 +44,13 @@ namespace JairLib.CustomObjects
 
             var tempBullet = new Bullet(new(MagicNumbers.RESET_HEIGHT, MagicNumbers.RESET_HEIGHT, MagicNumbers.BULLET_BASE_SIZE, MagicNumbers.BULLET_BASE_SIZE));
 
-            tempBullet.texture = Util.GlobalContent.Load<Texture2D>("Sprites/tripleShot");
+            tempBullet.texture = Util.GlobalContent.Load<Texture2D>("Sprites/Bullets/tripleShot");
             tempBullet.type = BulletType.Triple;
             tempBullet.bulletSpeed = MagicNumbers.BULLET_BASE_SPEED + 1;
 
             tempAmmo[tempAmmo.Length - 1] = tempBullet;
 
+            _player.ammo = tempAmmo; 
         }
         public void DamageBoost(Player _player)
         {
@@ -83,11 +84,13 @@ namespace JairLib.CustomObjects
 
             var tempBullet = new Bullet(new(MagicNumbers.RESET_HEIGHT, MagicNumbers.RESET_HEIGHT, MagicNumbers.BULLET_BASE_SIZE, MagicNumbers.BULLET_BASE_SIZE));
 
-            tempBullet.texture = Util.GlobalContent.Load<Texture2D>("Sprites/heavyShot");
+            tempBullet.texture = Util.GlobalContent.Load<Texture2D>("Sprites/Bullets/heavyShot");
             tempBullet.type = BulletType.Triple;
             tempBullet.bulletSpeed = MagicNumbers.BULLET_BASE_SPEED - 2;
 
             tempAmmo[tempAmmo.Length - 1] = tempBullet;
+
+            _player.ammo = tempAmmo;
         }
         public void BulletSpeed(Player _player)
         {
