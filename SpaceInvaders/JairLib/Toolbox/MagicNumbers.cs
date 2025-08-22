@@ -26,6 +26,10 @@ namespace JairLib.Toolbox
         public const int SHIP_BASE_SPEED = 1;
 
         public const int STARTING_ROUND = 1;
+        public static int CURRENT_ROUND = 1;
+        public static bool ADD_MONSTERS = false;
+
+        public static int LEVEL_SCALER = 6000;
 
         public static Monster[] LEVEL_ONE = new Monster[]
         {
@@ -33,5 +37,7 @@ namespace JairLib.Toolbox
             new Monster(),
             new Monster(),
         };
+
+        public static List<Monster> BASE_LEVEL = new List<Monster>();
     }
 }

@@ -27,7 +27,7 @@ namespace JairLib
 
             _player.Update(gameTime);
 
-            foreach (var monster in MagicNumbers.LEVEL_ONE)
+            foreach (var monster in MagicNumbers.BASE_LEVEL)
             {
                 monster.Update(gameTime);
             }

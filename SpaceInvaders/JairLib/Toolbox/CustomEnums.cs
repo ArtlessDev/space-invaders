@@ -14,7 +14,7 @@ namespace JairLib.Toolbox
         HealthBoost,
         SpeedBoost,
         Teleporter,
-        HeavyBlast,
+        HeavyShot,
         BulletSpeed,
     }
     public enum BulletStates

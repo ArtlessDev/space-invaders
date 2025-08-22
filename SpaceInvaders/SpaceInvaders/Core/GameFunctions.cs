@@ -20,18 +20,18 @@ namespace SpaceInvaders.Core
                 _spriteBatch.Draw(item.texture, item.rectangle, item.color);
             }
 
-            foreach (var item in MagicNumbers.LEVEL_ONE)
+            foreach (var item in MagicNumbers.BASE_LEVEL)
             {
                 _spriteBatch.Draw(item.texture, item.rectangle, item.color);
             }
 
-            _spriteBatch.DrawString(Util.gameFont, $"Score: {_player.PlayerScore}", new Vector2(MagicNumbers.SCREEN_WIDTH / 2, MagicNumbers.SCREEN_HEIGHT - 32), Color.White);
+            _spriteBatch.DrawString(Util.gameFontSmall, $"Score: {_player.PlayerScore}\nCurrent Round: {MagicNumbers.CURRENT_ROUND}", new Vector2(MagicNumbers.SCREEN_WIDTH-200, MagicNumbers.SCREEN_HEIGHT - 64), Color.White);
             _spriteBatch.DrawString(Util.gameFont, $"Player HP: {_player.PlayerHealth}", new Vector2(MagicNumbers.SCREEN_BORDER_LIMIT_LEFT, MagicNumbers.SCREEN_HEIGHT - 32), Color.White);
             _spriteBatch.DrawString(Util.gameFontSmall, $"Move: [A/LEFT] and [D/RIGHT] Shoot: [SPACE]", new Vector2(16, MagicNumbers.SCREEN_HEIGHT - 64), Color.White);
 
         }
 
-        public static void RoundOverDraw(SpriteBatch _spriteBatch)
+        public static void RoundOverDraw(SpriteBatch _spriteBatch, Player player)
         {
             if (Util.gameState != GameState.RoundOver)
                 return;
@@ -40,7 +40,8 @@ namespace SpaceInvaders.Core
             //make a reset button
             //
 
-            _spriteBatch.DrawString(Util.gameFont, "Round Over", new Vector2(MagicNumbers.SCREEN_WIDTH / 2, MagicNumbers.SCREEN_HEIGHT - 32), Color.White);
+            _spriteBatch.DrawString(Util.gameFont, $"Your Score: {player.PlayerScore.ToString()}", new Vector2(MagicNumbers.SCREEN_WIDTH / 3, MagicNumbers.SCREEN_HEIGHT / 2), Color.White);
+            _spriteBatch.DrawString(Util.gameFont, "Round Over", new Vector2(MagicNumbers.SCREEN_WIDTH / 3  , MagicNumbers.SCREEN_HEIGHT - 32), Color.White);
 
         }
     }

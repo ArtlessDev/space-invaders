@@ -32,16 +32,38 @@ namespace JairLib.Toolbox
 
         }
 
+        public static List<Monster> GetCurrentRoundMonsters(Player player)
+        {
+            if((player.PlayerScore * GameLevel) % MagicNumbers.LEVEL_SCALER == 0 
+                && (player.PlayerScore * GameLevel) != 0 
+                && MagicNumbers.ADD_MONSTERS)
+            {
+                MagicNumbers.BASE_LEVEL.Add(new Monster());
+                MagicNumbers.BASE_LEVEL.Add(new Monster());
+                MagicNumbers.BASE_LEVEL.Add(new Monster());
+                MagicNumbers.ADD_MONSTERS = false;
+
+                MagicNumbers.CURRENT_ROUND++;
+            }
+
+            return MagicNumbers.BASE_LEVEL;
+        }
+
         public static void HandleBulletCollision(Player _player, GameTime _gameTime)
         {
-            foreach (var monster in MagicNumbers.LEVEL_ONE)
+            var currRound = GetCurrentRoundMonsters(_player);
+            foreach (var monster in currRound)
             {
                 foreach (var bullet in _player.ammo)
                 {
                     if (bullet.rectangle.Intersects(monster.rectangle))
                     {
                         bullet.ResetBullet();
-                        monster.ResetMonster();
+                        monster.Health -= bullet.damageLevel;
+
+                        if (monster.Health <= 0)
+                            monster.ResetMonster();
+
                         _player.ScoreIncrease(monster);
                     }
                 }
@@ -51,6 +73,12 @@ namespace JairLib.Toolbox
                     monster.ResetMonster();
                     _player.Yeowch();
                 }
+            }
+
+            if ((_player.PlayerScore * GameLevel) % MagicNumbers.LEVEL_SCALER != 0
+                && (_player.PlayerScore * GameLevel) != 0)
+            {
+                MagicNumbers.ADD_MONSTERS = true;
             }
         }
     }

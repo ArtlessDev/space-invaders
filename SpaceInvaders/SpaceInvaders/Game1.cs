@@ -49,6 +49,10 @@ namespace SpaceInvaders
             Util.Load();
             test = new UpgradeObject(_player);
 
+            MagicNumbers.BASE_LEVEL.Add(new Monster());
+            MagicNumbers.BASE_LEVEL.Add(new Monster());
+            MagicNumbers.BASE_LEVEL.Add(new Monster());
+
             #region test gum ui button
             var stackPanel = new StackPanel();
             stackPanel.AddToRoot();
@@ -90,6 +94,7 @@ namespace SpaceInvaders
 
                 int upgradeRand = Random.Shared.Next(0, 7);
 
+                test.texture = Util.GlobalContent.Load<Texture2D>($"Sprites/Upgrades/{(Upgrades)upgradeRand}");
                 test.UpgradeDelegate = test.GetUpgradeMethod(_player, upgradeRand);
                 Debug.WriteLine(upgradeRand + ": UPDATED TO: " + test.UpgradeDelegate.Method);
 
@@ -111,7 +116,7 @@ namespace SpaceInvaders
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
 
-            GameFunctions.RoundOverDraw(_spriteBatch);
+            GameFunctions.RoundOverDraw(_spriteBatch, _player);
             GameFunctions.PlayingDraw(_spriteBatch, _player);
 
             _spriteBatch.Draw(test.texture, test.rectangle, test.color);

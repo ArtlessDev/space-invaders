@@ -16,9 +16,9 @@ namespace JairLib.CustomObjects
         public UpgradeObject(Player _player)
         {
             int rand = Random.Shared.Next(0, 7);
-
+            string txt = ((Upgrades)rand).ToString();
             UpgradeDelegate = GetUpgradeMethod(_player, rand);
-            texture = Util.GlobalContent.Load<Texture2D>("Sprites/Bullets/heavyShot");
+            texture = Util.GlobalContent.Load<Texture2D>($"Sprites/Upgrades/{txt}");
             rectangle = new Rectangle(0, MagicNumbers.SCREEN_BORDER_LIMIT_LEFT, 64, 64);
             color = Color.White;
             upgradeId = (Upgrades)rand;
@@ -47,10 +47,11 @@ namespace JairLib.CustomObjects
                     return SpeedBoost;
                 case (Upgrades.Teleporter)://5
                     return Teleporter;
-                case (Upgrades.HeavyBlast)://6
+                case (Upgrades.HeavyShot)://6
                     return HeavyBlast;
                 case (Upgrades.BulletSpeed)://7
                     return BulletSpeed;
+                case (Upgrades.ExtraShot)://0
                 default: //ExtraShot    0
                     return ExtraShot;
             }
@@ -69,6 +70,7 @@ namespace JairLib.CustomObjects
                 if (bulllet.rectangle.Intersects(this.rectangle))
                 {
                     UpgradeDelegate(_player);
+
                     Debug.WriteLine(upgradeId + " triggered");
                     upgradeState = UpgradeStates.Reset;
                     GetGoingFlag = true;

@@ -42,6 +42,16 @@ namespace JairLib.CustomObjects
             int rand = Random.Shared.Next(MagicNumbers.SCREEN_BORDER_LIMIT_LEFT, MagicNumbers.SCREEN_BORDER_LIMIT_RIGHT);
             rectangle = new Rectangle(rand, 0, rectangle.Width, rectangle.Height);
 
+            Health = MaxHealth;
+
+        }
+
+        internal void ReduceHealthPoints(Bullet bullet)
+        {
+            Health -= bullet.damageLevel;
+
+            if (Health <= 0)
+                ResetMonster();
         }
     }
 }

@@ -13,6 +13,7 @@ namespace JairLib.CustomObjects
             rectangle = _rect;
             state = BulletStates.None;
             bulletSpeed = MagicNumbers.BULLET_BASE_SPEED;
+            damageLevel = 1 * MagicNumbers.CURRENT_ROUND;
         }
 
         public string identifier { get; set; }
